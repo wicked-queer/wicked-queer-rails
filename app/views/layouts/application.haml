@@ -41,10 +41,8 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
 
     %script{ src: '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
-    %script{ src: '/javascripts/waypoints.min.js' }
     %script{ src: '//use.fontawesome.com/2062cb2865.js' }
     - if @calendar
-      %script{ src: '/javascripts/moment.js' }
       %script{ src: '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js' }
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 

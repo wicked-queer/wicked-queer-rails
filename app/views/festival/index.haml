@@ -1,0 +1,17 @@
+.series-shard-1
+.series-shard-2
+
+.wrapper
+  %h1.highlight.series__title
+    = @series.name
+
+.wrapper.series__description
+  %h1.highlight
+    = @series.description
+
+.wrapper.wrapper--events.l-mtxl
+  - @events.each do |event|
+    = render 'events/event', event: event
+
+  - (3 - @events.length % 3).times do
+    .event-card__spacer

@@ -24,7 +24,7 @@
   &:after {
     @include position(absolute, 4px nil nil 4px);
     @include size(100%);
-    background: url('/images/static.gif');
+    background: image-url('static.gif');
     display: block;
     content: '';
     opacity: .15;
@@ -122,7 +122,7 @@
   &:before {
     @include position(absolute, 0 0 0 0);
     @include transition(all .2s ease-in-out);
-    background: url('/images/static.gif');
+    background: image-url('static.gif');
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
     -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
     content: '';

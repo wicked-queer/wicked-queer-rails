@@ -20,12 +20,12 @@
 
 .festival {
   .series-shard-1 {
-    background: url('/images/static.gif');
+    background: image-url('static.gif');
     opacity: .75;
   }
 
   .series-shard-2 {
-    background: url('/images/static.gif');
+    background: image-url('static.gif');
     opacity: .33;
   }
 

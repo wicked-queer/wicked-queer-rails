@@ -20,7 +20,7 @@
 
   &:after {
     @include position(absolute, 0 0 0 0);
-    background: url('/images/static.gif');
+    background: image-url('static.gif');
     content: '';
     display: block;
     opacity: .3;
