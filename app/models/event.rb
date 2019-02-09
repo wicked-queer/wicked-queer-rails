@@ -11,6 +11,8 @@ class Event < ContentfulModel::Base
                        :image, :presenter, :additional_films, :film, :venue,
                        :series
 
+  coerce_field date: :Date
+
   def static_image
     return image.file.url if image
     return film.image.file.url if film && film.image
@@ -18,8 +20,7 @@ class Event < ContentfulModel::Base
   end
 
   def formatted_date
-    #Date.parse(date).strftime('%A, %b %-d, %Y  •  %l:%M %p')
-    date
+    Date.parse(date).strftime('%A, %b %-d, %Y  •  %l:%M %p')
   end
 
   def formatted_cost
@@ -42,7 +43,6 @@ class Event < ContentfulModel::Base
   end
 
   def is_past?
-    #date < DateTime.now - 5.hours
-    true
+    date < DateTime.now - 5.hours
   end
 end

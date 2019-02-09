@@ -1,2 +1,127 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+.pink-shard
+
+.wrapper
+  %h1.highlight.highlight--black.event__title
+    = @event.title
+
+- if @film && @film.alt_title
+  .wrapper
+    %h3.highlight.highlight--black.event__alt-title
+      = @film.alt_title
+
+- if @event.guest
+  .wrapper
+    %h3.highlight.highlight--black.event__guests
+      With Special
+      = @event.guest.length > 1 ? 'Guests' : 'Guest'
+      = @event.guest.to_sentence
+
+.wrapper.wrapper--event
+
+  .l-right-column
+    .event__details
+      .event__details__info
+        %h3.m-hide= @event.title
+        %p= @event.formatted_date
+        %p= @event.venue.name
+        - if @event.free?
+          %p FREE
+        - elsif @event.url && !@event.is_past? && @event.cost
+          %p= @event.formatted_cost
+      - if @event.url && !@event.is_past?
+        .event__details__button
+          %a.button{ href: @event.url, target: '_blank' } Buy Tickets
+      %iframe.event__location.m-hide{ src: "https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=#{@event.venue.name}"}
+
+  .l-left-column
+    - if @event.image
+      %img.event__media{ src: "#{@event.image.file.url}" }
+    - elsif @film && @film.trailer
+      .iframe.event__media
+        %iframe{ allowfullscreen: 'allowfullscreen', src: @film.trailer }
+    - elsif @film && @film.image
+      %img.event__media{ src: "#{@film.image.file.url}" }
+
+    .event__text
+      - if @film
+        %p.event__film-details
+          - if @film.director
+            %span
+              %i.fa.fa-video-camera
+              Directed by
+              = @film.director
+
+          - if @film.runtime
+            %span
+              %i.fa.fa-clock-o
+              = @film.formatted_runtime
+
+          - if @film.original_language
+            %span
+              %i.fa.fa-language
+              = @film.original_language.join(', ')
+
+          - if @film.country_of_origin
+            %span
+              %i.fa.fa-globe
+              = @film.country_of_origin.join(', ')
+
+          - if @film.genres
+            %span
+              %i.fa.fa-film
+              = @film.genres.join(', ')
+
+      .event__description
+        = @film.description if @film && @film.description
+        = @event.description if @event.description
+        - if @event.presenter
+          %p
+            This event is proud to be co-presented by:
+            - @event.presenter.each do |presenter|
+              - if presenter.presenter_url
+                %a{ href: presenter.presenter_url, target: '_blank' }
+                  = presenter.presenter_name
+                = "#{', ' unless presenter == @event.presenter.last}"
+              - else
+                = presenter.presenter_name
+        - if @film && @film.original_language
+          - language = @film.original_language.dup - ['English']
+          - if language.length > 1
+            %p
+              This film is presented with English subtitles.
+
+    - if @event.additional_films
+      .event__text
+        - @event.additional_films.each do |film|
+          .event__additional-film
+            .event__additional-film__image{ style: "background-image: url(#{film.image.file.url})" }
+            .event__additional-film__text
+              %h3.highlight= film.title
+              %p= film.description
+              %p.event__film-details
+                - if film.director
+                  %span
+                    %i.fa.fa-video-camera
+                    Directed by
+                    = film.director
+      
+                - if film.runtime
+                  %span
+                    %i.fa.fa-clock-o
+                    = film.runtime
+                    m
+      
+                - if film.original_language
+                  %span
+                    %i.fa.fa-language
+                    = film.original_language.join(', ')
+      
+                - if film.country_of_origin
+                  %span
+                    %i.fa.fa-globe
+                    = film.country_of_origin.join(', ')
+      
+                - if film.genres
+                  %span
+                    %i.fa.fa-film
+                    = film.genres.join(', ')

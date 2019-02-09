@@ -1,4 +1,4 @@
-%a.event-card{ href: "/events/#{event.slug}"  }
+= link_to event_path(id: event.slug), class: 'event-card' do
   - if event.guest
     .event-card__guest
       Special Guest!

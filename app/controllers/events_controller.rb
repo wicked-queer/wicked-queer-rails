@@ -7,5 +7,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find_by(slug: params[:id]).first()
+    @film = @event.film
   end
 end
