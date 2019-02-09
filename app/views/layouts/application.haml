@@ -1,0 +1,151 @@
+!!!
+
+%html
+  %head
+    - title = nil
+    -# title = @film.title if @film
+    - title = @series.name if @series
+    - title = @event.title if @event
+    - t = "#{(title + ' | ') if title}Wicked Queer"
+
+    - image = 'http://www.wickedqueer.org/images/wq_graphic.png'
+    - image = "http:#{@homePage.hero_image.file.url}" if @homePage
+    -# image = @film.get_image_url if @film
+    - image = "#{@event.static_image}" if @event
+
+    - description = ''
+    - description = @homePage.hero_text if @homePage
+    -# description = @film.get_description if @film
+    - description = @series.description if @series
+    - description = @event.full_description if @event
+
+    %title= t
+
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    %meta{ property: 'og:title' , content: t }
+    %meta{ property: 'og:type' , content: 'website' }
+    %meta{ property: 'og:url', content: request.url }
+    %meta{ property: 'og:image', content: image }
+    %meta{ property: 'og:description', content: description }
+
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+
+    %link{ href: '/assets/favicon.png', rel: 'shortcut icon', type: 'image/x-icon' }
+
+    %link{ href: '//fonts.googleapis.com/css?family=Source+Code+Pro:300,400,700|Source+Sans+Pro:300,400,700', rel: 'stylesheet'}
+    - if @calendar
+      %link{ href: '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css', rel: 'stylesheet' }
+      %link{ href: '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.print.css', rel: 'stylesheet' }
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+    %script{ src: '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
+    %script{ src: '/javascripts/waypoints.min.js' }
+    %script{ src: '//use.fontawesome.com/2062cb2865.js' }
+    - if @calendar
+      %script{ src: '/javascripts/moment.js' }
+      %script{ src: '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js' }
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+
+
+  %body{ class: "#{'home' if @home} #{'festival' if @festival} #{'series' if @series_page}" }
+
+    %header.js-header{ class: "#{'header--dark' if @home  }"}
+      %i.fa.fa-bars.fa-2x.header__menu.js-header-menu
+
+      = link_to root_path do
+        = image_tag 'logo.svg', class: 'logo'
+
+      %nav.js-nav
+
+        .nav__dropdown
+          %span.nav__link
+            Festival & Events
+            %i.fa.fa-angle-down
+          .nav__menu
+            %a.nav__link{href: '/festival'} Film Festival 2019
+            %a.nav__link{href: '/jury'} Festival Jury
+            %a.nav__link{href: '/festival2018'} Film Festival 2018
+            %a.nav__link{href: '/festival2017'} Film Festival 2017
+            %a.nav__link.disabled Archive
+
+        .nav__dropdown
+          %span.nav__link
+            Get Involved
+            %i.fa.fa-angle-down
+          .nav__menu
+            %a.nav__link{href: '/volunteer'} Volunteer
+            %a.nav__link.disabled Donate
+            %a.nav__link{href: '/sponsorships'} Sponsorships
+
+        %a.nav__link.disabled Blog
+
+        %a.nav__link{href: '/about'} About
+
+        .nav__dropdown
+          %span.nav__link
+            Submit a Film
+            %i.fa.fa-angle-down
+          .nav__menu
+            %a.nav__link{href: 'https://www.withoutabox.com/03film/03t_fin/03t_fin_fest_01over.php?festival_id=8771'} Via Withoutabox
+            %a.nav__link{href: 'https://filmfreeway.com/festival/WickedQueer'} Via FilmFreeway
+
+    %main.js-main
+      = yield
+
+    %footer
+
+      %form{ action: "//wickedqueer.us12.list-manage.com/subscribe/post?u=6a850b73695fa990cc42bb016&amp;id=590c4427d3",
+            method: "post",
+            id: "mc-embedded-subscribe-form",
+            name: "mc-embedded-subscribe-form",
+            class: "footer__newsletter",
+            target: "_blank",
+            novalidate: "novalidate" }
+
+        %p
+          Join our Newsletter!
+
+        .inputs
+          %input{ type: 'email', value: '', name: 'EMAIL', id: 'mce-EMAIL',
+                placeholder: 'Email' }
+
+          -# real people should not fill this in and expect good things - do not remove this or risk form bot signups
+          %div{ style: "position: absolute; left: -5000px;", 'aria-hidden' => "true" }
+            %input{ type: "text",
+                  name: "b_6a850b73695fa990cc42bb016_590c4427d3",
+                  tabindex: "-1",
+                  value: "" }
+
+          %input{ type: "submit",
+                value: "Subscribe",
+                name: "subscribe",
+                id: "mc-embedded-subscribe",
+                class: "button" }
+
+      .footer__links
+        .footer__links__left
+          = link_to root_path do
+            = image_tag 'logo.svg', class: 'logo'
+
+        .footer__links__right
+          %a.footer__link{href: '/events'} Events
+          %a.footer__link{href: '/about'} About
+          %a.footer__link{href: '/volunteer'} Volunteer
+          %a.footer__link{href: '/sponsorships'} Sponsorships
+          %a.footer__link{href: '/'} Submit a Film
+
+      .footer__copyright
+        .footer__copyright__left
+          &copy; 2019 Wicked Queer
+
+    :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-70362319-2', 'auto');
+      ga('send', 'pageview');
