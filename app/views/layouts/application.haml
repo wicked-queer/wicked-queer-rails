@@ -35,18 +35,14 @@
     %link{ href: '/assets/favicon.png', rel: 'shortcut icon', type: 'image/x-icon' }
 
     %link{ href: '//fonts.googleapis.com/css?family=Source+Code+Pro:300,400,700|Source+Sans+Pro:300,400,700', rel: 'stylesheet'}
-    - if @calendar
-      %link{ href: '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css', rel: 'stylesheet' }
-      %link{ href: '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.print.css', rel: 'stylesheet' }
+    %link{ href: '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css', rel: 'stylesheet' }
+    %link{ href: '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.print.css', rel: 'stylesheet' }
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
 
     %script{ src: '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
     %script{ src: '//use.fontawesome.com/2062cb2865.js' }
-    - if @calendar
-      %script{ src: '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js' }
+    %script{ src: '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js' }
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-
-
 
   %body{ class: "#{'home' if @home} #{'festival' if @festival} #{'series' if @series_page}" }
 
@@ -65,22 +61,18 @@
           .nav__menu
             %a.nav__link{href: '/festival'} Film Festival 2019
             %a.nav__link{href: '/jury'} Festival Jury
-            %a.nav__link{href: '/festival2018'} Film Festival 2018
-            %a.nav__link{href: '/festival2017'} Film Festival 2017
-            %a.nav__link.disabled Archive
+            %a.nav__link{href: '/festival/2018'} Film Festival 2018
+            %a.nav__link{href: '/festival/2017'} Film Festival 2017
 
         .nav__dropdown
           %span.nav__link
             Get Involved
             %i.fa.fa-angle-down
           .nav__menu
+            %a.nav__link{href: '/membership'} Membership
             %a.nav__link{href: '/volunteer'} Volunteer
-            %a.nav__link.disabled Donate
-            %a.nav__link{href: '/sponsorships'} Sponsorships
 
-        %a.nav__link.disabled Blog
-
-        %a.nav__link{href: '/about'} About
+        %a.nav__link{href: '/about-us'} About Us
 
         .nav__dropdown
           %span.nav__link

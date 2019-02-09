@@ -1,0 +1,5 @@
+.wrapper
+  %h1= @page.title
+
+.wrapper.wrapper--about.about-us
+  = parse_markdown(@page.content)
