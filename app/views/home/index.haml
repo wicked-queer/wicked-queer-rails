@@ -1,0 +1,23 @@
+.hero{ style: "background-image: url(#{@homePage.hero_image.file.url})" }
+  .hero__pink-shard
+  .wrapper.wrapper--hero
+    %h1
+      - if @homePage.url
+        %a{ href: @homePage.url }
+          = @homePage.hero_text
+      - else
+        = @homePage.hero_text
+
+#waypoint
+
+%section.home__events
+  .wrapper.wrapper--events
+    - @events.each do |event|
+      = render 'events/event', event: event
+
+    - (@events.length % 3).times do
+      .event-card__spacer
+
+%div{ style: 'text-align: center; margin-bottom: 30px;' }
+  = link_to events_path, class: 'button button--inline' do
+    See All Events
