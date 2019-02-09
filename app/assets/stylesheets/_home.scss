@@ -1,0 +1,74 @@
+.hero {
+  align-items: center;
+  background: none;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 93%, 40% 89%, 0% 100%);
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 93%, 40% 89%, 0% 100%);
+  display: flex;
+  height: 600px;
+  position: relative;
+
+  &:before {
+    @include filter(grayscale(100%));
+    @include position(absolute, 0 0 0 0);
+    background-image: inherit;
+    background-position: center;
+    background-size: cover;
+    display: block;
+    content: '';
+    z-index: 1;
+  }
+
+  &:after {
+    @include position(absolute, 0 0 0 0);
+    background: url('/images/static.gif');
+    content: '';
+    display: block;
+    opacity: .3;
+    z-index: 2;
+  }
+
+  h1 {
+    display: inline;
+    background: $white;
+    font-family: $heading-font-family;
+    font-size: 48px;
+    font-weight: $light;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  @media ($tablet) {
+    h1 {
+      font-size: rem(36);
+    }
+  }
+}
+
+.hero__pink-shard {
+  @include linear-gradient(135deg, shade($pink, 15%), $pink);
+  @include position(absolute, 0 60% 0 0);
+  clip-path: polygon(0% 0%, 60% 0%, 100% 89%, 0% 100%);
+  -webkit-clip-path: polygon(0% 0%, 60% 0%, 100% 89%, 0% 100%);
+  z-index: 3;
+}
+
+.home__events {
+  margin: 90px 0px;
+
+  @media ($tablet) {
+    margin: 45px 0px;
+  }
+}
+
+.home__sponsors {
+  @include filter(grayscale(100%));
+  margin: 90px 0 0 0;
+  opacity: .7;
+
+  @media ($tablet) {
+    margin: 45px 0px;
+  }
+}

@@ -1,0 +1,32 @@
+h1 {
+  font-family: $heading-font-family;
+  font-size: rem(48);
+  font-weight: $light;
+}
+
+h2 {
+  font-family: $heading-font-family;
+  font-size: rem(42);
+  font-weight: $light;
+}
+
+.highlight {
+  background: $white;
+  display: inline;
+  font-family: $heading-font-family;
+  font-weight: $light;
+
+  &--black {
+    background: black;
+    color: white;
+  }
+
+  &--pink {
+    background: $pink;
+    color: white;
+  }
+}
+
+a {
+  color: $pink;
+}

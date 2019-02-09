@@ -1,0 +1,9 @@
+.wrapper
+  %h1 All Upcoming Events
+
+.wrapper.wrapper--events
+  - @events.each do |event|
+    = render 'event', event: event
+
+  - (3 - @events.length % 3).times do
+    .event-card__spacer

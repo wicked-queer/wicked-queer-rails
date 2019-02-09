@@ -1,0 +1,41 @@
+// Typography
+$base-font-family: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif;
+$heading-font-family: 'Source Code Pro', 'Helvetica', 'Arial', sans-serif;
+
+// Font Sizes
+$small-font-size: rem(14);
+$base-font-size: rem(16);
+$large-font-size: rem(24);
+
+// Font Weights
+$light: 300;
+$normal: 400;
+$bold: 700;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+$small-line-height: 1;
+
+// Colors
+$white: #FFFFFF;
+$dark-gray: #333333;
+$pink: #f81757;
+
+$primary-brand-color: $pink;
+$secondary-brand-color: $dark-gray;
+
+// Responsive Breakpoints
+$small-monitor: 'max-width: 1100px';
+$tablet: 'max-width: 900px';
+$ipad: $tablet;
+$mobile: 'max-width: 450px';
+
+// Misc
+$box-shadow: 0px 2px 2px rgba(black, .10), 0px 0px 4px rgba(black, .05);
+$border-radius: 2px;
+$base-spacing: $base-line-height * 1rem;
+$large-spacing: $base-spacing * 2;
+$largest-spacing: $base-spacing * 4;
+$small-spacing: $base-spacing / 2;
+$smallest-spacing: $base-spacing / 4;

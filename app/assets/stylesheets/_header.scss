@@ -1,0 +1,153 @@
+header {
+  @include position(fixed, 0 0 nil 0);
+  align-items: center;
+  background: $white;
+  box-shadow: 0 3px 3px rgba(black, .1);
+  display: flex;
+  height: 60px;
+  padding-left: $large-spacing;
+  padding-right: $large-spacing;
+  transition: all .2s ease-in-out;
+  z-index: 9;
+
+  a {
+    display: block;
+    line-height: 1;
+  }
+
+  @media($tablet) {
+    justify-content: center;
+
+    nav {
+      @include position(fixed, 0 nil 0 0);
+      @include transform(translateX(-100%));
+      transition: transform .15s ease-in;
+      background: $pink;
+      display: block;
+      overflow-y: auto;
+      padding: $base-spacing;
+      width: 75%;
+
+      span.nav__link {
+        opacity: .5;
+      }
+
+      .nav__link {
+        color: $white !important;
+        font-size: rem(18);
+        text-shadow: none !important;
+        padding: $small-spacing;
+
+        &:not(:last-child) {
+          margin-bottom: $small-spacing !important;
+        }
+      }
+
+      &.is-open {
+        @include transform(translateX(0));
+        transition: transform .25s ease-out;
+      }
+    }
+
+    .nav__dropdown .nav__menu {
+      background: none;
+      border: none;
+      display: block;
+      padding: $small-spacing;
+      position: static;
+    }
+  }
+}
+
+nav {
+  align-items: center;
+  display: flex;
+  margin-left: auto;
+
+  & > *:not(:last-child) {
+    margin-right: $large-spacing;
+  }
+}
+
+.logo {
+  @include filter(brightness(100%) invert(0%));
+  display: block;
+  transition: all .2s ease-in-out;
+  width: 130px;
+}
+
+.nav__link {
+  color: $pink;
+  font-size: rem(14);
+  font-family: $heading-font-family;
+  font-weight: $bold;
+  line-height: 2;
+  transition: all .2s ease-in-out;
+  text-decoration: none;
+
+  &.disabled {
+    color: #ccc;
+  }
+}
+
+.nav__dropdown {
+  position: relative;
+
+  &:hover {
+    .nav__menu {
+      display: block;
+    }
+  }
+
+  .nav__menu {
+    @include position(absolute, 25px nil nil calc(-1 * #{$base-spacing}));
+    background: $white;
+    display: none;
+    padding: $base-spacing;
+    width: 210px;
+
+    .nav__link {
+      color: $pink;
+      line-height: 1;
+      text-shadow: none;
+
+      &.disabled {
+        color: #ccc;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: $base-spacing;
+      }
+    }
+  }
+}
+
+header.header--dark {
+  background: transparent;
+  box-shadow: 0 3px 3px rgba(black, 0);
+
+  .logo {
+    @include filter(brightness(0%) invert(100%));
+    fill: $white;
+  }
+
+  .nav__link {
+    color: $white;
+    text-shadow: 0 0 4px rgba(black, .6);
+  }
+
+  .header__menu {
+    color: $white;
+  }
+}
+
+i.fa.header__menu {
+  color: $pink;
+  cursor: pointer;
+  display: none;
+
+  @media($tablet) {
+    @include position(absolute, nil nil nil $small-spacing);
+    display: block;
+  }
+}

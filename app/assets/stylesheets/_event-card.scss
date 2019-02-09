@@ -1,0 +1,201 @@
+.event-card {
+  background: $white;
+  color: $dark-gray;
+  cursor: pointer;
+  display: block;
+  flex: 1 calc(33% - 2 * #{$small-spacing});
+  margin: $small-spacing;
+  position: relative;
+  text-decoration: none;
+
+  img {
+    width: 100%;
+  }
+
+  &:before {
+    @include position(absolute, 0px nil nil 0px);
+    @include size(100%);
+    background: white;
+    display: block;
+    content: '';
+    z-index: -1;
+  }
+
+  &:after {
+    @include position(absolute, 4px nil nil 4px);
+    @include size(100%);
+    background: url('/images/static.gif');
+    display: block;
+    content: '';
+    opacity: .15;
+    z-index: -1;
+  }
+
+  &:hover {
+    &:after {
+      opacity: .1;
+    }
+
+    .event-card__image {
+      @include filter(grayscale(100%));
+
+      &:before {
+        opacity: .1;
+      }
+    }
+  }
+
+  &--dark {
+    background: #444;
+    color: $white;
+
+    &:before {
+      background: #444;
+    }
+
+    .event-card__content {
+      background: #444;
+    }
+  }
+
+  @media ($small-monitor) {
+    flex-basis: calc(50% - 2 * #{$small-spacing})
+  }
+
+  @media ($tablet) {
+    background: none !important;
+    margin: 0;
+    margin-bottom: $large-spacing;
+    padding-left: 110px;
+
+    &:after, &:before {
+      display: none;
+    }
+
+    .event-card__image {
+      @include position(absolute, 3px nil nil 0);
+      @include size(100px);
+      clip-path: none;
+      padding: 0;
+      position: absolute;
+    }
+
+    .event-card__content {
+      background: none !important;
+      padding: 0;
+
+      h3, span {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.event-card__guest {
+  @include position(absolute, $small-spacing 0 nil nil);
+  background: $pink;
+  color: $white;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 7% 100%);
+  font-family: $heading-font-family;
+  padding: 5px 5px 5px 15px;
+  z-index: 5;
+
+  @media ($tablet) {
+    clip-path: none;
+    display: inline;
+    padding: 2px;
+    position: static;
+  }
+}
+
+.event-card__image {
+  @include filter(grayscale(0%));
+  @include transition(all .2s ease-in-out);
+  background-position: center;
+  background-size: cover;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+  padding-bottom: 70%;
+  position: relative;
+  width: 100%;
+
+  &:before {
+    @include position(absolute, 0 0 0 0);
+    @include transition(all .2s ease-in-out);
+    background: url('/images/static.gif');
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+    content: '';
+    display: block;
+    opacity: 0;
+  }
+
+  @media ($tablet) {
+    padding-bottom: 60%;
+  }
+}
+
+.event-card__content {
+  background: $white;
+  padding: $small-spacing 40px 45px 40px;
+  position: relative;
+
+  h3 {
+    color: $pink;
+    font-size: rem(24);
+    font-weight: 400;
+    margin-bottom: $small-spacing;
+    text-decoration: none;
+  }
+
+  .series {
+    color: #aaa;
+    display: block;
+    font-family: $heading-font-family;
+    font-size: rem(13);
+    margin-bottom: 3px;
+  }
+
+  @media ($tablet) {
+    padding: 0 $base-spacing $base-spacing $base-spacing
+  }
+}
+
+.event-card__spacer {
+  flex: 1 calc(33% - 2 * #{$small-spacing});
+  height: 0;
+  margin: $small-spacing;
+
+  @media ($small-monitor) {
+    flex-basis: calc(50% - 2 * #{$small-spacing})
+  }
+}
+
+.series .event-card .series {
+  display: none;
+}
+
+.series:not(.festival) .event-card {
+  @media ($tablet) {
+    color: $white;
+    h3 {
+      color: $white;
+    }
+    span {
+      color: $white;
+    }
+  }
+}
+
+.series.festival .event-card {
+  background: #444;
+  color: $white;
+
+  &:before {
+    background: #444;
+  }
+
+  .event-card__content {
+    background: #444;
+  }
+}

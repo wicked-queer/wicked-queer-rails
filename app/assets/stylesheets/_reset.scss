@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  outline: none !important;
+  padding: 0;
+}
+
+body {
+  background: #f2f2f2;
+  color: $dark-gray;
+  font-family: $base-font-family;
+  font-weight: $normal;
+  line-height: $base-line-height;
+  min-height: 100vh;
+  padding: 85px 0px 405px 0px;
+  position: relative;
+
+  &.home {
+    padding-top: 0px;
+  }
+
+  &.series {
+    background: $pink;
+  }
+
+  &.series.festival {
+    background: #222;
+  }
+}
+
+html {
+  font-size: 100%;
+
+  @media ($small-monitor) {
+    font-size: 96%;
+  }
+
+  @media ($ipad) {
+    font-size: 93%;
+  }
+
+  @media ($mobile) {
+    font-size: 85%;
+  }
+}

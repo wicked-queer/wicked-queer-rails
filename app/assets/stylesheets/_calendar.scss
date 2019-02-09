@@ -1,0 +1,49 @@
+.fc-event {
+  background: none !important;
+  border: none !important;
+  border-radius: 0px !important;
+  color: $dark-gray !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  padding: 2px 0px !important;
+}
+
+.fc-event.calendar-festival {
+  color: $pink !important;
+}
+
+.fc-event.calendar-past {
+  opacity: .5 !important;
+}
+
+.fc tbody .fc-row .fc-content-skeleton table {
+  min-height: 140px !important;
+}
+
+.fc-button-group, .fc button {
+  display: block !important;
+}
+
+.fc-state-default {
+  background: $pink !important;
+  border: none !important;
+  border-radius: 0px !important;
+  box-shadow: 2px 2px 0 rgba(black, .1) !important;
+  color: $white !important;
+  margin: 2px !important;
+  text-shadow: none !important;
+}
+
+.fc-state-disabled {
+  background: #aaa !important;
+  box-shadow: none !important;
+}
+
+.fc-right {
+  margin-top: 15px !important;
+}
+
+.calendar-subscribe {
+  display: block;
+  text-align: right;
+}

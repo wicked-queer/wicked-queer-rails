@@ -1,0 +1,23 @@
+.button {
+  align-items: center;
+  background: $pink;
+  color: $white;
+  display: flex;
+  font-family: $heading-font-family;
+  font-size: rem(14);
+  font-weight: $bold;
+  justify-content: center;
+  height: 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    background: shade($pink, 5%);
+    box-shadow: 2px 2px 0 rgba(black, .1);
+  }
+}
+
+.button--inline {
+  display: inline-flex;
+  padding: 0 20px;
+}

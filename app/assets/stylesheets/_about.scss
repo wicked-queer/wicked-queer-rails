@@ -1,0 +1,25 @@
+.about-us {
+  font-size: 18px;
+  margin-top: 60px;
+
+  p, ul, hr {
+    margin-bottom: 30px;
+  }
+
+  ul {
+    padding-left: 30px;
+  }
+
+  .person {
+    align-items: flex-start;
+    display: flex;
+    margin-bottom: 30px;
+
+    img {
+      display: block;
+      flex: 0 0 auto;
+      margin: 10px 24px 0 0;
+      width: 160px;
+    }
+  }
+}

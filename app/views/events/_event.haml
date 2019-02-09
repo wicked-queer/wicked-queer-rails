@@ -1,0 +1,13 @@
+%a.event-card{ href: "/events/#{event.slug}"  }
+  - if event.guest
+    .event-card__guest
+      Special Guest!
+  .event-card__image{ style: "background-image: url(#{event.static_image})" }
+  .event-card__content
+    - if event.series
+      %span.series= event.series.name
+    %h3= event.title
+    %p= event.formatted_date
+    %p= event.venue&.name
+    - if !event.is_past? && (event.free? || event.url)
+      %p= event.formatted_cost
