@@ -1,0 +1,35 @@
+%header.js-header{ class: "#{'header--dark' if @home  }"}
+  %i.fa.fa-bars.fa-2x.header__menu.js-header-menu
+
+  = link_to root_path do
+    = image_tag 'logo.svg', class: 'logo'
+
+  %nav.js-nav
+
+    .nav__dropdown
+      %span.nav__link
+        Festival & Events
+        %i.fa.fa-angle-down
+      .nav__menu
+        = link_to 'Film Festival 2019', festival_index_path, class: 'nav__link'
+        = link_to 'Festival Jury', '/jury', class: 'nav__link'
+        = link_to 'Film Festival 2018', festival_path(id: '2018'), class: 'nav__link'
+        = link_to 'Film Festival 2017', festival_path(id: '2017'), class: 'nav__link'
+
+    .nav__dropdown
+      %span.nav__link
+        Get Involved
+        %i.fa.fa-angle-down
+      .nav__menu
+        = link_to 'Membership', '/membership', class: 'nav__link'
+        = link_to 'Volumnteer', '/volunteer', class: 'nav__link'
+
+    = link_to 'About Us', '/about-us', class: 'nav__link'
+
+    .nav__dropdown
+      %span.nav__link
+        Submit a Film
+        %i.fa.fa-angle-down
+      .nav__menu
+        = link_to 'Via Withoutabox', 'https://www.withoutabox.com/03film/03t_fin/03t_fin_fest_01over.php?festival_id=8771', class: 'nav__link'
+        = link_to 'Via FilmFreeway', 'https://filmfreeway.com/festival/WickedQueer', class: 'nav__link'
