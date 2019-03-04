@@ -24,10 +24,14 @@ class Event < ContentfulModel::Base
   end
 
   def formatted_cost
-    if cost == 0
-      'FREE'
-    elsif cost > 0
-      format("$%.2f", cost)
+    if cost
+      if cost == 0
+        'FREE'
+      elsif cost > 0
+        format("$%.2f", cost)
+      end
+    else
+      nil
     end
   end
 

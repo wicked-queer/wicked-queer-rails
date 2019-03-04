@@ -1,3 +1,6 @@
+= content_for :body_class, 'body-home'
+= content_for :description, @homePage.hero_text
+
 .hero{ style: "background-image: url(#{@homePage.hero_image.file.url})" }
   .hero__pink-shard
   .wrapper.wrapper--hero

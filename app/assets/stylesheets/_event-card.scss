@@ -171,11 +171,7 @@
   }
 }
 
-.series .event-card .series {
-  display: none;
-}
-
-.series:not(.festival) .event-card {
+.body-series .event-card {
   @media ($tablet) {
     color: $white;
     h3 {
@@ -187,7 +183,8 @@
   }
 }
 
-.series.festival .event-card {
+.body-festival .event-card,
+.body-series .event-card {
   background: #444;
   color: $white;
 
@@ -197,5 +194,9 @@
 
   .event-card__content {
     background: #444;
+
+    .series {
+      display: none;
+    }
   }
 }

@@ -1,5 +1,8 @@
+= content_for :title, 'Upcoming Events'
+= content_for :body_class, 'body-events'
+
 .wrapper
-  %h1 All Upcoming Events
+  %h1 Upcoming Events
 
 .wrapper.wrapper--events
   - @events.each do |event|

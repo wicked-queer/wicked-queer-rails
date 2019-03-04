@@ -2,33 +2,20 @@
 
 %html
   %head
-    - title = nil
-    -# title = @film.title if @film
-    - title = @series.name if @series
-    - title = @event.title if @event
-    - t = "#{(title + ' | ') if title}Wicked Queer"
-
     - image = '/wq_graphic.png'
     - image = "http:#{@homePage.hero_image.file.url}" if @homePage
-    -# image = @film.get_image_url if @film
     - image = "#{@event.static_image}" if @event
 
-    - description = ''
-    - description = @homePage.hero_text if @homePage
-    -# description = @film.get_description if @film
-    - description = @series.description if @series
-    - description = @event.full_description if @event
-
-    %title= t
+    %title= formatted_title(yield :title)
 
     = csrf_meta_tags
     = csp_meta_tag
 
-    %meta{ property: 'og:title' , content: t }
+    %meta{ property: 'og:title' , content: formatted_title(yield :title) }
     %meta{ property: 'og:type' , content: 'website' }
     %meta{ property: 'og:url', content: request.url }
     %meta{ property: 'og:image', content: image }
-    %meta{ property: 'og:description', content: description }
+    %meta{ property: 'og:description', content: yield(:description) }
 
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
 
@@ -40,7 +27,7 @@
     %script{ src: '//use.fontawesome.com/2062cb2865.js' }
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  %body{ class: "#{'home' if @home} #{'festival' if @festival} #{'series' if @series_page}" }
+  %body{ class: yield(:body_class) }
 
     = render 'layouts/header'
 

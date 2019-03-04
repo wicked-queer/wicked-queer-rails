@@ -22,7 +22,5 @@ class FestivalController < ApplicationController
                     order('date').
                     load
     @series = Series.find_by(name: name).first()
-    @series_page = true
-    @festival = true
   end
 end

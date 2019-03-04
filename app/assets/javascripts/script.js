@@ -4,7 +4,7 @@ $( function() {
       element: document.getElementById('waypoint'),
       offset: 500,
       handler: function() {
-        $('.js-header').toggleClass('header--dark');
+        $('.js-header').toggleClass('has-background');
       }
     });
   }

@@ -6,6 +6,5 @@ class HomeController < ApplicationController
                     limit(11).
                     order('date').
                     load
-    @home = true
   end
 end
