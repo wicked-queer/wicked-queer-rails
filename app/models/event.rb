@@ -20,7 +20,7 @@ class Event < ContentfulModel::Base
   end
 
   def formatted_date
-    Date.parse(date).strftime('%A, %b %-d, %Y  •  %l:%M %p')
+    DateTime.parse(date).strftime('%A, %b %-d, %Y  •  %l:%M %p')
   end
 
   def formatted_cost
