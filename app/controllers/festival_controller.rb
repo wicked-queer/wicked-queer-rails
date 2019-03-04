@@ -13,6 +13,7 @@ class FestivalController < ApplicationController
   private
 
   def get_festival(year=CURRENT_FESTIVAL)
+    check_preview_api
     name = "Festival #{year}"
     @events = Event.all.
                     params({

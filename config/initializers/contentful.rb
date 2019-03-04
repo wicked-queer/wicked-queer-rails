@@ -6,6 +6,6 @@ ContentfulRails.configure do |config|
   config.space = ENV['CONTENTFUL_SPACE_ID']
 end
 
-unless Rails.env.production?
+if Rails.env == 'development'
   ContentfulModel.use_preview_api = true
 end
