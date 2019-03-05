@@ -45,7 +45,7 @@ class Event < ContentfulModel::Base
   end
 
   def image_url
-    image&.file&.url || film.image_url
+    image&.file&.url || film&.image_url
   end
 
   def is_past?
