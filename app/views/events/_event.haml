@@ -2,7 +2,7 @@
   - if event.guest
     .event-card__guest
       Special Guest!
-  .event-card__image{ style: "background-image: url(#{event.static_image})" }
+  .event-card__image{ style: "background-image: url(#{image_with_default event.image_url})" }
   .event-card__content
     - if event.series
       %span.series= event.series.name

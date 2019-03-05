@@ -16,6 +16,10 @@ class Film < ContentfulModel::Base
     end
   end
 
+  def image_url
+    image&.file&.url
+  end
+
   def trailer
     if vimeo_id
       "https://player.vimeo.com/video/#{vimeo_id}?title=0&byline=0&portrait=0"

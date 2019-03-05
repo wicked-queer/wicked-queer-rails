@@ -4,7 +4,7 @@
   %head
     - image = '/wq_graphic.png'
     - image = "http:#{@homePage.hero_image.file.url}" if @homePage
-    - image = "#{@event.static_image}" if @event
+    - image = "#{image_with_default event.image_url}" if @event
 
     %title= formatted_title(yield :title)
 

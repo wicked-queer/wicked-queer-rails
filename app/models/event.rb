@@ -14,9 +14,7 @@ class Event < ContentfulModel::Base
   coerce_field date: :Date
 
   def static_image
-    return image.file.url if image
-    return film.image.file.url if film && film.image
-    return 'http://www.wickedqueer.org/images/static.gif'
+    image_url ? image_url : film&.image_url
   end
 
   def formatted_date
@@ -44,6 +42,10 @@ class Event < ContentfulModel::Base
     full_description += film.description if film && film.description
     full_description += description if description
     full_description
+  end
+
+  def image_url
+    image&.file&.url || film.image_url
   end
 
   def is_past?
