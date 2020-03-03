@@ -11,14 +11,14 @@ class Event < ContentfulModel::Base
                        :image, :presenter, :additional_films, :film, :venue,
                        :series
 
-  coerce_field date: :Date
+  # coerce_field date: :Date
 
   def static_image
     image_url ? image_url : film&.image_url
   end
 
   def formatted_date
-    DateTime.parse(date).strftime('%A, %b %-d, %Y  •  %l:%M %p')
+    date&.strftime('%A, %b %-d, %Y  •  %l:%M %p')
   end
 
   def formatted_cost
