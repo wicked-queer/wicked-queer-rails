@@ -2,11 +2,8 @@
 = content_for :body_class, 'body-events'
 
 .wrapper
-  %h1 Upcoming Events
+  %h1.l-mbl Upcoming Events
 
 .wrapper.wrapper--events
   - @events.each do |event|
     = render 'event', event: event
-
-  - (3 - @events.length % 3).times do
-    .event-card__spacer

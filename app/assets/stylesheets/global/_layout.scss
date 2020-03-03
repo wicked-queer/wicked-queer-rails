@@ -30,16 +30,15 @@
   }
 
   &--events {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-left: calc(#{$large-spacing} - #{$small-spacing});
-    padding-right: calc(#{$large-spacing} - #{$small-spacing});
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: $base-spacing;
+    grid-row-gap: $base-spacing;
 
     @media ($tablet) {
       display: block;
-      padding-left: $small-spacing;
-      padding-right: $small-spacing;
+      padding-left: $base-spacing;
+      padding-right: $base-spacing;
     }
   }
 
