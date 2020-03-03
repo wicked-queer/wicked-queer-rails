@@ -8,8 +8,12 @@
   position: relative;
 
   &:before {
-    @include filter(grayscale(100%));
-    @include position(absolute, 0 0 0 0);
+    filter: grayscale(100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     background-image: inherit;
     background-position: center;
     background-size: cover;
@@ -19,7 +23,11 @@
   }
 
   &:after {
-    @include position(absolute, 0 0 0 0);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     background: image-url('static.gif');
     content: '';
     display: block;
@@ -48,8 +56,12 @@
 }
 
 .hero__pink-shard {
-  @include linear-gradient(135deg, shade($pink, 15%), $pink);
-  @include position(absolute, 0 60% 0 0);
+  background: linear-gradient(135deg, shade($pink, 15%), $pink);
+  position: absolute;
+    top: 0;
+    right: 60%;
+    left: 0;
+    bottom: 0;
   clip-path: polygon(0% 0%, 60% 0%, 100% 89%, 0% 100%);
   -webkit-clip-path: polygon(0% 0%, 60% 0%, 100% 89%, 0% 100%);
   z-index: 3;
@@ -64,7 +76,7 @@
 }
 
 .home__sponsors {
-  @include filter(grayscale(100%));
+  filter: grayscale(100%);
   margin: 90px 0 0 0;
   opacity: .7;
 

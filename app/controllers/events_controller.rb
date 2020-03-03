@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   def index
     check_preview_api
     @events = Event.all.
-                    params({'fields.date[gte]' => DateTime.now}).
+                    params({'fields.date[gte]' => DateTime.now.to_s}).
                     order('date').
                     load
   end

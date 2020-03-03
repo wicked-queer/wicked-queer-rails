@@ -1,10 +1,15 @@
 footer {
-  @include position(absolute, nil 0 0 0);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   padding-top: 120px;
 }
 
 .footer__newsletter {
-  @include position(absolute, 0 0 nil nil);
+  position: absolute;
+    top: 0;
+    right: 0;
   background: $pink;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 100%);
   max-width: 600px;

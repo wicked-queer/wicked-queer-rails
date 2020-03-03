@@ -62,7 +62,7 @@
   opacity: .8;
 
   .event-row__image {
-    @include filter(grayscale(100%));
+    filter: grayscale(100%);
   }
 
   .event-row__content, span {
