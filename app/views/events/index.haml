@@ -4,9 +4,11 @@
 .wrapper
   %h1 Upcoming Events
 
-.wrapper.wrapper--events
+.wrapper
+  %p= DateTime.now
   - @events.each do |event|
-    = render 'event', event: event
+    =# render 'event', event: event
+    %p= event.date
 
   - (3 - @events.length % 3).times do
     .event-card__spacer

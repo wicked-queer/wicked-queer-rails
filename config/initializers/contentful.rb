@@ -5,7 +5,3 @@ ContentfulRails.configure do |config|
   config.preview_access_token = ENV['CONTENTFUL_PREVIEW_API_KEY']
   config.space = ENV['CONTENTFUL_SPACE_ID']
 end
-
-if Rails.env == 'development'
-  ContentfulModel.use_preview_api = true
-end
