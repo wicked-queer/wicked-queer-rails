@@ -76,8 +76,8 @@
               = @film.genres.join(', ')
 
       .event__description
-        = @film.description if @film && @film.description
-        = @event.description if @event.description
+        = parse_markdown(@film&.description)
+        = parse_markdown(@event&.description)
         - if @event.presenter
           %p
             This event is proud to be co-presented by:

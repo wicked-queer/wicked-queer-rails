@@ -1,0 +1,162 @@
+.pink-shard {
+  background: linear-gradient(135deg, #ba1141, #f95181);
+
+  position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 100%);
+  height: 500px;
+}
+
+.event__media {
+  margin-bottom: $base-spacing;
+  width: 100%;
+
+  @media ($tablet) {
+    margin-bottom: $small-spacing;
+  }
+}
+
+.event__description {
+  font-size: rem(20);
+  margin-bottom: $base-spacing;
+
+  p:not(:last-child) {
+    margin-bottom: $base-spacing;
+  }
+}
+
+.event__film-details {
+  color: #999;
+  font-size: rem(14);
+  margin-bottom: $small-spacing;
+
+  span {
+    display: inline-block;
+    margin-right: 10px;
+
+    i {
+      margin-right: 5px;
+    }
+
+    &:not(:last-child):after {
+      color: #ddd;
+      content: '|';
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    @media ($tablet) {
+      display: block;
+      font-size: rem(18);
+
+      &:after {
+        display: none !important;
+      }
+    }
+  }
+}
+
+.event__text, .event__details {
+  background: #fafafa;
+  margin-bottom: $base-spacing;
+  padding: $base-spacing;
+
+  @media ($mobile) {
+    padding: $small-spacing;
+  }
+}
+
+.event__details {
+  border: 1px solid #eee;
+
+  @media ($tablet) {
+    border-color: transparent;
+    font-size: rem(20);
+    margin-bottom: $small-spacing;
+  }
+}
+
+.event__details__info {
+  margin-bottom: $base-spacing;
+
+  @media ($tablet) {
+    margin-bottom: 0;
+  }
+}
+
+.event__details__button {
+  @media ($tablet) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: $white;
+    border-top: 1px solid #ddd;
+    box-shadow: 0px -3px 3px rgba(black, .07);
+    display: flex;
+    padding: $small-spacing;
+    width: 100%;
+    z-index: 99;
+  }
+
+  .button {
+    flex: 1;
+  }
+}
+
+.event__location {
+  border: none;
+  height: 450px;
+  margin-top: $base-spacing;
+  width: 100%;
+
+  @media ($tablet) {
+    height: 250px;
+    width: 100%;
+  }
+}
+
+.keyword {
+  background: $pink;
+  border-radius: 100px;
+  color: $white;
+  display: inline-block;
+  line-height: 1;
+  margin-bottom: 10px;
+  padding: 4px 16px;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.event__additional-film {
+  max-width: 650px;
+  min-height: 135px;
+  padding-left: calc(130px + #{$base-spacing});
+  position: relative;
+
+  &:not(:last-child) {
+    margin-bottom: $base-spacing;
+  }
+
+  .event__film-details {
+    span {
+      @media ($tablet) {
+        display: block;
+        font-size: rem(15);
+      }
+    }
+  }
+}
+
+.event__additional-film__image {
+  position: absolute;
+    top: 5px;
+    left: 0;
+  width: 130px;
+    height: 130px;
+  background-size: cover;
+  background-position: center center;
+}

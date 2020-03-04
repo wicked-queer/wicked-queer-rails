@@ -1,5 +1,5 @@
 class FestivalController < ApplicationController
-  CURRENT_FESTIVAL = '2019'
+  CURRENT_FESTIVAL = '2020'
 
   def index
     get_festival
