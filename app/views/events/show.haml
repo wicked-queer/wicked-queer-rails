@@ -101,7 +101,7 @@
             .event__additional-film__image{ style: "background-image: url(#{image_with_default(film.image_url)})" }
             .event__additional-film__text
               %h3.highlight= film.title
-              %p= film.description
+              %p= parse_markdown(film&.description)
               %p.event__film-details
                 - if film.director
                   %span
