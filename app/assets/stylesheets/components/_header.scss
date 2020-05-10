@@ -83,6 +83,24 @@ nav {
   width: 130px;
 }
 
+.donate-button {
+  align-items: flex;
+  display: flex;
+}
+
+.donate-button button {
+  display: block;
+  border: none;
+  border-radius: 40px;
+  background: $pink;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: $heading-font-family;
+  font-weight: $bold;
+  padding: 6px 16px;
+}
+
 .nav__link {
   color: $pink;
   font-size: rem(14);
