@@ -1,4 +1,7 @@
 class Event < ContentfulModel::Base
+  # How long to keep events up after the start time.
+  EVENT_DISPLAY_BUFFER = 21.hours
+
   self.content_type_id = 'event'
 
   has_one :series
@@ -12,6 +15,28 @@ class Event < ContentfulModel::Base
                        :series
 
   # coerce_field date: :Date
+
+  def self.find_all
+    self.all.load
+  end
+
+  def self.find_upcoming
+    self.all.
+          params({'fields.date[gt]' => (DateTime.now - EVENT_DISPLAY_BUFFER).to_s}).
+          limit(200).
+          order('date').
+          load
+  end
+
+  def self.find_by_series series_name
+    self.all.
+          params({
+            'fields.series.sys.contentType.sys.id' => 'series',
+            'fields.series.fields.name[match]' => series_name
+          }).
+          order('date').
+          load
+  end
 
   def static_image
     image_url ? image_url : film&.image_url
@@ -49,6 +74,10 @@ class Event < ContentfulModel::Base
   end
 
   def is_past?
-    date < DateTime.now - 5.hours
+    date < DateTime.now - EVENT_DISPLAY_BUFFER
+  end
+
+  def virtual?
+    venue.virtual
   end
 end

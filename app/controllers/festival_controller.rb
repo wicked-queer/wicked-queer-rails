@@ -15,13 +15,7 @@ class FestivalController < ApplicationController
   def get_festival(year=CURRENT_FESTIVAL)
     check_preview_api
     name = "Festival #{year}"
-    @events = Event.all.
-                    params({
-                      'fields.series.sys.contentType.sys.id' => 'series',
-                      'fields.series.fields.name[match]' => name
-                    }).
-                    order('date').
-                    load
+    @events = Event.find_by_series(name)
     @series = Series.find_by(name: name).first()
   end
 end

@@ -11,3 +11,4 @@
     %p= event.venue&.name
     - if !event.is_past? && (event.free? || event.url)
       %p= event.formatted_cost
+  
