@@ -1,10 +1,7 @@
 class EventsController < ApplicationController
   def index
     check_preview_api
-    @events = Event.all.
-                    params({'fields.date[gt]' => (DateTime.now - 3.hours).to_s}).
-                    order('date').
-                    load
+    @events = Event.find_upcoming
   end
 
   def show
