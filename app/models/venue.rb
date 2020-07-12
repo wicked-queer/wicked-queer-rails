@@ -3,5 +3,5 @@ class Venue < ContentfulModel::Base
 
   belongs_to_many :events
 
-  return_nil_for_empty :name, :url, :location, :virtual
+  return_nil_for_empty :name, :url, :location, :virtual, :description
 end
