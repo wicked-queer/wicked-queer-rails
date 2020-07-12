@@ -35,7 +35,9 @@
       - if @event.url && !@event.is_past?
         .event__details__button
           %a.button{ href: @event.url, target: '_blank' } Buy Tickets
-      - unless @event.virtual?
+      - if @event.virtual?
+        %p.l-mtl= @event.venue.description
+      - else
         %iframe.event__location.m-hide{ src: "https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=#{@event.venue.name}"}
 
   .l-left-column
