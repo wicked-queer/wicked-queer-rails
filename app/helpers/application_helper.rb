@@ -3,7 +3,11 @@ module ApplicationHelper
     "#{title + ' | ' unless title.empty?}Wicked Queer"
   end
 
-  def image_with_default(url)
-    url ? url : image_path('static.gif')
+  def formatted_date(date)
+    date&.strftime('%b %-d, %Y  %l:%M %p')
+  end
+
+  def formatted_cost(cost)
+    format("$%.2f", cost)
   end
 end

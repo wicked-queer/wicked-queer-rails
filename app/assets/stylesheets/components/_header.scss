@@ -41,7 +41,6 @@ header,
 
       .nav__link {
         color: $white !important;
-        font-size: rem(18);
         text-shadow: none !important;
         padding: $small-spacing;
 
@@ -103,7 +102,7 @@ nav {
 
 .nav__link {
   color: $pink;
-  font-size: rem(14);
+  font-size: $small-font-size;
   font-family: $heading-font-family;
   font-weight: $bold;
   line-height: 2;

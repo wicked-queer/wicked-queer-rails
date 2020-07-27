@@ -12,7 +12,7 @@ class Event < ContentfulModel::Base
 
   return_nil_for_empty :title, :slug, :date, :cost, :url, :description, :guest,
                        :image, :presenter, :additional_films, :film, :venue,
-                       :series
+                       :series, :end_date
 
   # coerce_field date: :Date
 
@@ -20,9 +20,9 @@ class Event < ContentfulModel::Base
     self.all.load
   end
 
-  def self.find_upcoming
+  def self.upcoming
     self.all.
-          params({'fields.date[gt]' => (DateTime.now - EVENT_DISPLAY_BUFFER).to_s}).
+          params({'fields.endDate[gt]' => DateTime.now.to_s}).
           limit(200).
           order('date').
           load
@@ -42,22 +42,6 @@ class Event < ContentfulModel::Base
     image_url ? image_url : film&.image_url
   end
 
-  def formatted_date
-    date&.strftime('%A, %b %-d, %Y  •  %l:%M %p')
-  end
-
-  def formatted_cost
-    if cost
-      if cost == 0
-        'FREE'
-      elsif cost > 0
-        format("$%.2f", cost)
-      end
-    else
-      nil
-    end
-  end
-
   def free?
     cost == 0
   end
@@ -74,10 +58,14 @@ class Event < ContentfulModel::Base
   end
 
   def is_past?
-    date < DateTime.now - EVENT_DISPLAY_BUFFER
+    (safe_end_date) < DateTime.now
   end
 
   def virtual?
     venue.virtual
+  end
+
+  def safe_end_date
+    end_date || date + 3.hours
   end
 end
