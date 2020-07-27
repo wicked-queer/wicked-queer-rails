@@ -156,7 +156,7 @@
 
   h3 {
     color: $pink;
-    font-size: rem(24);
+    font-size: $large-font-size;
     font-weight: 400;
     margin-bottom: $small-spacing;
     text-decoration: none;
@@ -166,7 +166,7 @@
     color: #aaa;
     display: block;
     font-family: $heading-font-family;
-    font-size: rem(13);
+    font-size: $small-font-size;
     margin-bottom: 3px;
   }
 

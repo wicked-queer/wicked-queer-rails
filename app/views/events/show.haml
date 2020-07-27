@@ -26,15 +26,15 @@
     .event__details
       .event__details__info
         %h3.m-hide= @event.title
-        %p= @event.formatted_date
+        %p
+          = event_dates(@event)
         %p= @event.venue.name
-        - if @event.free?
-          %p FREE
-        - elsif @event.url && !@event.is_past? && @event.cost
-          %p= @event.formatted_cost
-      - if @event.url && !@event.is_past?
+        - unless @event.cost.nil?
+          %p= event_cost(@event)
+      - if @event.url
         .event__details__button
-          %a.button{ href: @event.url, target: '_blank' } Buy Tickets
+          - attrs = @event.is_past? ? {disabled: true} : {href: @event.url, target: '_blank'}
+          %a.button{attrs} Buy Tickets
       - if @event.virtual?
         %p.l-mtl= @event.venue.description
       - else
@@ -58,20 +58,25 @@
               Directed by
               = @film.director
 
+          - if @film.release_date
+            %span
+              %i.fa.fa-calendar
+              = @film.release_date.strftime('%Y')
+
           - if @film.runtime
             %span
               %i.fa.fa-clock-o
               = @film.formatted_runtime
 
-          - if @film.original_language
-            %span
-              %i.fa.fa-language
-              = @film.original_language.join(', ')
-
           - if @film.country_of_origin
             %span
               %i.fa.fa-globe
               = @film.country_of_origin.join(', ')
+
+          - if @film.original_language
+            %span
+              %i.fa.fa-language
+              = @film.original_language.join(', ')
 
           - if @film.genres
             %span

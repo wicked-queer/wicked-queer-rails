@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def index
     check_preview_api
-    @events = Event.find_upcoming
+    @events = Event.upcoming
   end
 
   def show

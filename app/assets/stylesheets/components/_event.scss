@@ -19,7 +19,6 @@
 }
 
 .event__description {
-  font-size: rem(20);
   margin-bottom: $base-spacing;
 
   p:not(:last-child) {
@@ -28,8 +27,7 @@
 }
 
 .event__film-details {
-  color: #999;
-  font-size: rem(14);
+  font-size: $small-font-size;
   margin-bottom: $small-spacing;
 
   span {
@@ -49,7 +47,6 @@
 
     @media ($tablet) {
       display: block;
-      font-size: rem(18);
 
       &:after {
         display: none !important;
@@ -73,7 +70,6 @@
 
   @media ($tablet) {
     border-color: transparent;
-    font-size: rem(20);
     margin-bottom: $small-spacing;
   }
 }
@@ -132,7 +128,7 @@
 }
 
 .event__additional-film {
-  max-width: 650px;
+  max-width: 750px;
   min-height: 135px;
   padding-left: calc(130px + #{$base-spacing});
   position: relative;
@@ -145,7 +141,6 @@
     span {
       @media ($tablet) {
         display: block;
-        font-size: rem(15);
       }
     }
   }
@@ -153,10 +148,10 @@
 
 .event__additional-film__image {
   position: absolute;
-    top: 5px;
-    left: 0;
+  top: 5px;
+  left: 0;
   width: 130px;
-    height: 130px;
+  height: 130px;
   background-size: cover;
   background-position: center center;
 }

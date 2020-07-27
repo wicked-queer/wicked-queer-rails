@@ -7,8 +7,8 @@
     - if event.series
       %span.series= event.series.name
     %h3= event.title
-    %p= event.formatted_date
+    %p= event_dates(event)
     %p= event.venue&.name
-    - if !event.is_past? && (event.free? || event.url)
-      %p= event.formatted_cost
+    - unless event.cost.nil?
+      %p= event_cost(event)
   
