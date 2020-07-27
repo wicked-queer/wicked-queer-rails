@@ -71,7 +71,7 @@
     background: none !important;
     margin: 0;
     margin-bottom: $large-spacing;
-    padding-left: 110px;
+    padding-left: 90px;
 
     &:after, &:before {
       display: none;
@@ -81,8 +81,8 @@
       position: absolute;
       top: 3px;
       left: 0;
-      width: 100px;
-    height: 100px;
+      width: 80px;
+      height: 80px;
       clip-path: none;
       padding: 0;
       position: absolute;
@@ -92,7 +92,12 @@
       background: none !important;
       padding: 0;
 
+      .series {
+        display: none;
+      }
+
       h3, span {
+        line-height: 1.2;
         margin: 0;
       }
     }

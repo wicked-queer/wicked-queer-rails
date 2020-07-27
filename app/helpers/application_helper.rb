@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def formatted_date(date)
-    date&.strftime('%B %-d, %Y  %l:%M %p')
+    date&.strftime('%b %-d, %Y  %l:%M %p')
   end
 
   def formatted_cost(cost)
