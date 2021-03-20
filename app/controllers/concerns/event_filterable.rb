@@ -10,9 +10,11 @@ module EventFilterable
 
     filters.inject(events) do |filtered_events, filter|
       options = params[filter[:name]]
-      return filtered_events if options.nil? || options.empty?
-
-      filtered_events.select{ |event| filter[:filter].call(event, options) }
+      if options.nil? || options.empty?
+        filtered_events
+      else
+        filtered_events.select{ |event| filter[:filter].call(event, options) }
+      end
     end
   end
 
@@ -20,12 +22,12 @@ module EventFilterable
 
   # The filters ///////////////////////////////////////////////////////////////
 
-  JURIED = {
-    name: 'juried',
-    label: 'Juried',
-    filter: proc { |event, juried| filter_by_juried(event, juried) },
-    options: proc { |events| juried_filter_options(events) }
-  }
+  # JURIED = {
+  #   name: 'juried',
+  #   label: 'Juried',
+  #   filter: proc { |event, juried| filter_by_juried(event, juried) },
+  #   options: proc { |events| juried_filter_options(events) }
+  # }
 
   SPECIAL_EVENT = {
     name: 'special_event',
@@ -50,9 +52,9 @@ module EventFilterable
 
   # filter_by methods /////////////////////////////////////////////////////////
 
-  def self.filter_by_juried(event, juried)
-    juried.include? event.in_competition
-  end
+  # def self.filter_by_juried(event, juried)
+  #   juried.include? event.in_competition
+  # end
   
   def self.filter_by_special_event(event, specials)
     specials.include? event.special_event
@@ -68,16 +70,16 @@ module EventFilterable
 
   # filter options ////////////////////////////////////////////////////////////
 
-  def self.juried_filter_options(events)
-    [true, false].each do |juried|
-      {
-        value: juried,
-        label: (juried ? 'In Competition' : 'Not in competition'),
-        selected: false,
-        disabled: false
-      }
-    end
-  end
+  # def self.juried_filter_options(events)
+  #   [true, false].each do |juried|
+  #     {
+  #       value: juried,
+  #       label: (juried ? 'In Competition' : 'Not in competition'),
+  #       selected: false,
+  #       disabled: false
+  #     }
+  #   end
+  # end
 
   def self.special_event_filter_options(events)
     events.map(&:special_event).uniq.compact.map do |special_event|
