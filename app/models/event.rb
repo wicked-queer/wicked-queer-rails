@@ -12,7 +12,7 @@ class Event < ContentfulModel::Base
 
   return_nil_for_empty :title, :slug, :date, :cost, :url, :description, :guest,
                        :image, :presenter, :additional_films, :film, :venue,
-                       :series, :end_date
+                       :series, :end_date, :event_type, :promoted
 
   # coerce_field date: :Date
 
@@ -24,7 +24,6 @@ class Event < ContentfulModel::Base
     self.all.
           params({'fields.endDate[gt]' => DateTime.now.to_s}).
           limit(200).
-          order('date').
           load
   end
 
@@ -36,6 +35,42 @@ class Event < ContentfulModel::Base
           }).
           order('date').
           load
+  end
+
+  def self.find_by_multiple(series: nil, venue: nil, type: nil, sort: 'default')
+    params = {}
+    if series
+      params.merge!({
+        'fields.series.sys.contentType.sys.id' => 'series',
+        'fields.series.fields.name[match]' => series
+      })
+    end
+
+    if venue
+      params.merge!({
+        'fields.venue.sys.contentType.sys.id' => 'venue',
+        'fields.venue.fields.id[in]' => venue
+      })
+    end
+
+    if type
+      params.merge!({
+        'fields.eventType[in]' => type
+      })
+    end
+
+    order = case sort
+            when 'date'
+              ['fields.date', 'fields.title']
+            when 'title'
+              ['fields.title', 'fields.date']
+            else
+              ['fields.promoted', 'fields.date', 'fields.title']
+            end
+
+    params.merge!({order: order})
+
+    self.all.params(params).load
   end
 
   def static_image

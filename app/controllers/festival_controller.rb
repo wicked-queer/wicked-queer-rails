@@ -1,4 +1,7 @@
 class FestivalController < ApplicationController
+  include EventSortable
+  include EventFilterable
+
   CURRENT_FESTIVAL = '2021'
 
   def index
@@ -15,7 +18,12 @@ class FestivalController < ApplicationController
   def get_festival(year=CURRENT_FESTIVAL)
     check_preview_api
     name = "Festival #{year}"
-    @events = Event.find_by_series(name)
     @series = Series.find_by(name: name).first()
+    @all_events = Event.find_by_series name
+    @events = filter_events(@all_events)
+    @events = sort_events(@events)
+
+    @sort_options = sort_options
+    @filters = filters
   end
 end

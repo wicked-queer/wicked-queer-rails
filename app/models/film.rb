@@ -6,7 +6,7 @@ class Film < ContentfulModel::Base
   return_nil_for_empty :title, :alt_title, :tmdb_id, :image, :youtube_id,
                        :vimeo_id, :description, :director, :runtime,
                        :original_language, :country_of_origin, :genres,
-                       :release_date, :tags
+                       :release_date, :tags, :in_competition
 
   def formatted_runtime
     if runtime
