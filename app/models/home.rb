@@ -1,4 +1,4 @@
-class HomePage < ContentfulModel::Base
+class Home < ContentfulModel::Base
   self.content_type_id = 'homePage'
 
   return_nil_for_empty :url
