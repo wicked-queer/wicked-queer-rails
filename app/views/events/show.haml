@@ -4,6 +4,15 @@
 
 .pink-shard
 
+- if @event.event_type || @event.special_event
+  .wrapper
+    - if @event.special_event
+      %span.highlight.highlight--black.l-mrs
+        = @event.special_event.humanize
+    - if @event.event_type
+      %span.highlight.highlight--black
+        = @event.event_type.humanize
+        
 .wrapper
   %h1.highlight.highlight--black.event__title
     = @event.title
