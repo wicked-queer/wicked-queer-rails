@@ -104,22 +104,31 @@
   }
 }
 
-.event-card__guest {
+.event-card__special-event {
   position: absolute;
-    top: $small-spacing;
-    right: 0;
-  background: $pink;
-  color: $white;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 7% 100%);
-  font-family: $heading-font-family;
-  padding: 5px 5px 5px 15px;
+  top: 20px;
+  right: 20px;
   z-index: 5;
 
+  span {
+    background: $pink;
+    border-radius: 100px;
+    color: $white;
+    font-family: $heading-font-family;
+    margin-left: 8px;
+    padding: 2px 8px;
+  }
+
   @media ($tablet) {
-    clip-path: none;
     display: inline;
-    padding: 2px;
     position: static;
+
+    span {
+      border-radius: 0;
+      margin-left: 0;
+      margin-right: 4px;
+      padding: 2px;
+    }
   }
 }
 
@@ -167,9 +176,8 @@
     text-decoration: none;
   }
 
-  .series {
-    color: #aaa;
-    display: block;
+  .series, .event-type {
+    color: #888;
     font-family: $heading-font-family;
     font-size: $small-font-size;
     margin-bottom: 3px;
