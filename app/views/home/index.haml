@@ -11,6 +11,8 @@
       - else
         = @homePage.hero_text
 
+= render 'shared/filters'
+
 %section.home__events
   .wrapper.wrapper--events
     - @events.each do |event|
