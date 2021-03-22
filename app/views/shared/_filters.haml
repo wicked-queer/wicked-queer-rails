@@ -1,17 +1,17 @@
-%form
-  %div
-    %label{for: 'sort'} Sort
+%form#filters
+  %div.filter
+    %label.filter-label{for: 'sort'} Sort
     %select{name: 'sort'}
       - @sort_options.each do |option|
         %option{value: option[:value], selected: params[:sort] === option[:value]}
           = option[:label]
 
   - @filters.each do |filter|
-    %div
-      %label= filter[:label]
+    %div.filter
+      %h6.filter-label= filter[:label]
       - filter[:options].call(@all_events).each do |option|
-        %label
+        %label.filter-option
           %input{type: 'checkbox', name: "#{filter[:name]}[]", value: option[:value], checked: params[filter[:name]]&.include?(option[:value])}
           = option[:label]
 
-  %button{type: 'submit'} Filter
+  %button.button{type: 'submit'} Filter

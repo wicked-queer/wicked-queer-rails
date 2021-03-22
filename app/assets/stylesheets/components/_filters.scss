@@ -1,0 +1,41 @@
+#filters {
+  position: sticky;
+  top: 80px;
+}
+
+#filters {
+  margin-right: 24px;
+  width: 180px;
+
+  .filter {
+    margin-bottom: 24px;
+  }
+
+  label {
+    display: block;
+  }
+
+  select {
+    padding: 2px 6px;
+  }
+
+  input[type='checkbox'] {
+    left: 0;
+    position: absolute;
+    top: 3px;
+  }
+
+  .filter-label {
+    font-family: $heading-font-family;
+    font-size: .875rem;
+    font-weight: bold;
+  }
+
+  .filter-option {
+    font-size: 1rem;
+    line-height: 1.1rem;
+    margin-bottom: 6px;
+    padding-left: 20px;
+    position: relative;
+  }
+}

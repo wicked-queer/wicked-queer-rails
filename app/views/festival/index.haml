@@ -13,11 +13,14 @@
   %h1.highlight
     = @series.description
 
-  = render 'shared/filters'
 
-.wrapper.wrapper--events.l-mtxl
-  - @events.each do |event|
-    = render 'events/event', event: event
+.wrapper.wrapper--filters.l-mtxl
+  .filters
+    = render 'shared/filters'
 
-  - (3 - @events.length % 3).times do
-    .event-card__spacer
+  .wrapper--events
+    - @events.each do |event|
+      = render 'events/event', event: event
+
+    - (3 - @events.length % 3).times do
+      .event-card__spacer

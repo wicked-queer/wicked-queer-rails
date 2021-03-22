@@ -11,12 +11,14 @@
       - else
         = @homePage.hero_text
 
-= render 'shared/filters'
-
 %section.home__events
-  .wrapper.wrapper--events
-    - @events.each do |event|
-      = render 'events/event', event: event
+  .wrapper.wrapper--filters
+    .filters
+      = render 'shared/filters'
+
+    .wrapper--events
+      - @events.each do |event|
+        = render 'events/event', event: event
 
 -# %div{ style: 'text-align: center; margin-bottom: 100px;' }
 -#   = link_to events_path, class: 'button button--inline' do
