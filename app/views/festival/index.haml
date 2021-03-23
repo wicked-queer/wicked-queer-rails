@@ -13,27 +13,14 @@
   %h1.highlight
     = @series.description
 
-  %form
-    %div
-      %label{for: 'sort'} Sort
-      %select{name: 'sort'}
-        - @sort_options.each do |option|
-          %option{value: option[:value], selected: params[:sort] === option[:value]}
-            = option[:label]
 
-    - @filters.each do |filter|
-      %div
-        %label= filter[:label]
-        - filter[:options].call(@all_events).each do |option|
-          %label
-            %input{type: 'checkbox', name: "#{filter[:name]}[]", value: option[:value], checked: params[filter[:name]]&.include?(option[:value])}
-            = option[:label]
+.wrapper.wrapper--filters.l-mtxl
+  .filters
+    = render 'shared/filters'
 
-    %button{type: 'submit'} Filter
+  .wrapper--events
+    - @events.each do |event|
+      = render 'events/event', event: event
 
-.wrapper.wrapper--events.l-mtxl
-  - @events.each do |event|
-    = render 'events/event', event: event
-
-  - (3 - @events.length % 3).times do
-    .event-card__spacer
+    - (3 - @events.length % 3).times do
+      .event-card__spacer
