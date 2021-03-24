@@ -5,10 +5,14 @@ class Series < ContentfulModel::Base
 
   return_nil_for_empty :name, :description
 
-  def analytics_attributes
+  def to_hash
     {
       name: name,
       description: description
     }
+  end
+
+  def to_json
+    to_hash.to_json
   end
 end

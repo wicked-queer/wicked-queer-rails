@@ -5,12 +5,16 @@ class Venue < ContentfulModel::Base
 
   return_nil_for_empty :name, :url, :location, :virtual, :description
 
-  def analytics_attributes
+  def to_hash
     {
       name: name,
       url: url,
       location: location,
       virtual: virtual
     }
+  end
+
+  def to_json
+    to_hash.to_json
   end
 end
