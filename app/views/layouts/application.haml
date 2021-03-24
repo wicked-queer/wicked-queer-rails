@@ -1,7 +1,12 @@
 !!!
 
 %html
-  %head
+  %head 
+    = Gon::Base.render_data
+
+    :javascript
+      dataLayer = [{event: gon.event}];
+
     :javascript
       <!-- Google Tag Manager -->
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -44,7 +49,6 @@
       = yield
 
     %footer
-
       = render 'layouts/newsletter'
 
       .footer__links

@@ -27,4 +27,21 @@ class Film < ContentfulModel::Base
       "https://www.youtube.com/embed/#{youtube_id}?rel=0&amp;&amp;showinfo=0"
     end
   end
+
+  def analytics_attributes
+    {
+      title: title,
+      alt_title: alt_title,
+      youtube_id: youtube_id,
+      vimeo_id: vimeo_id,
+      director: director,
+      runtime: runtime,
+      original_language: original_language,
+      country_of_origin: country_of_origin,
+      genres: genres,
+      release_date: release_date,
+      tags: tags,
+      in_competition: in_competition,
+    }
+  end
 end
