@@ -104,25 +104,29 @@ class Event < ContentfulModel::Base
     end_date || date + 3.hours
   end
 
-  def analytics_attributes
+  def to_hash
     {
-      additional_films: additional_films&.map(&:analytics_attributes),
+      additional_films: additional_films&.map(&:to_hash),
       cost: cost,
       end_date: safe_end_date,
       event_type: event_type,
       free: free?,
-      film: film&.analytics_attributes,
+      film: film&.to_hash,
       guest: guest,
       is_past: is_past?,
       promoted: promoted,
-      series: series&.analytics_attributes,
+      series: series&.to_hash,
       slug: slug,
       start_date: date,
       special_event: special_event,
       title: title,
       url: url,
-      venue: venue&.analytics_attributes,
+      venue: venue&.to_hash,
       virtual: virtual?,
     }
+  end
+
+  def to_json
+    to_hash.to_json
   end
 end

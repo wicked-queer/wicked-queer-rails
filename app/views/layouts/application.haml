@@ -2,8 +2,6 @@
 
 %html
   %head 
-    = Gon::Base.render_data
-
     :javascript
       dataLayer = [];
 
@@ -41,7 +39,7 @@
     %script{ src: '//use.fontawesome.com/2062cb2865.js' }
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  %body{ class: yield(:body_class) }
+  %body{ class: yield(:body_class), 'data-event' => @event&.to_json || '{}' }
 
     = render 'layouts/header'
 
@@ -67,5 +65,6 @@
         .footer__copyright__left
           &copy; 2021 Wicked Queer
 
-:javascript
-  dataLayer.push({festivalEvent: gon.event})
+    :javascript
+      event = JSON.parse(document.body.dataset.event);
+      dataLayer.push({festivalevent: event});

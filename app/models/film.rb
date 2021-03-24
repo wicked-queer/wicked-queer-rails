@@ -28,7 +28,7 @@ class Film < ContentfulModel::Base
     end
   end
 
-  def analytics_attributes
+  def to_hash
     {
       title: title,
       alt_title: alt_title,
@@ -43,5 +43,9 @@ class Film < ContentfulModel::Base
       tags: tags,
       in_competition: in_competition,
     }
+  end
+
+  def to_json
+    to_hash.to_json
   end
 end
