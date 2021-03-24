@@ -12,7 +12,7 @@ class Event < ContentfulModel::Base
 
   return_nil_for_empty :title, :slug, :date, :cost, :url, :description, :guest,
                        :image, :presenter, :additional_films, :film, :venue,
-                       :series, :end_date, :event_type, :promoted
+                       :series, :end_date, :event_type, :promoted, :special_event
 
   # coerce_field date: :Date
 
@@ -102,5 +102,26 @@ class Event < ContentfulModel::Base
 
   def safe_end_date
     end_date || date + 3.hours
+  end
+
+  def analytics_attributes
+    {
+      additional_films: additional_films&.map(&:analytics_attributes),
+      cost: cost,
+      end_date: safe_end_date,
+      event_type: event_type,
+      free: free?,
+      film: film&.analytics_attributes,
+      guest: guest,
+      is_past: is_past?,
+      promoted: promoted,
+      series: series&.analytics_attributes,
+      start_date: date,
+      special_event: special_event,
+      title: title,
+      url: url,
+      venue: venue&.analytics_attributes,
+      virtual: virtual?,
+    }
   end
 end
