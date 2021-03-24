@@ -116,6 +116,7 @@ class Event < ContentfulModel::Base
       is_past: is_past?,
       promoted: promoted,
       series: series&.analytics_attributes,
+      slug: slug,
       start_date: date,
       special_event: special_event,
       title: title,

@@ -9,6 +9,6 @@ class EventsController < ApplicationController
     @event = Event.find_by(slug: params[:id]).first()
     @film = @event.film
 
-    gon.push({event: @event.analytics_attributes})
+    gon.event = @event.analytics_attributes
   end
 end
