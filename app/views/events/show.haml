@@ -1,6 +1,7 @@
 = content_for :title, @event.title
 = content_for :description, @event.full_description
 = content_for :body_class, 'body-event'
+= content_for :page_parameters, @event.to_json
 
 .pink-shard
 
@@ -43,7 +44,7 @@
       - if @event.url
         .event__details__button
           - attrs = @event.is_past? ? {disabled: true} : {href: @event.url, target: '_blank'}
-          %a#tickets-button.button{attrs, 'data-event' => @event.to_json} Buy Tickets
+          %a#tickets-button.button{attrs, 'data-event' => 'wq.buyTicketsClick', 'data-event-parameters' => @event.to_json} Buy Tickets
       - if @event.virtual?
         %p.l-mtl= @event.venue.description
       - else

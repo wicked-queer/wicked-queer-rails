@@ -1,4 +1,4 @@
-= link_to event_path(id: event.slug), class: 'event-card' do
+= link_to event_path(id: event.slug), class: 'event-card', 'data-event' => 'wq.eventClick', 'data-event-parameters' => event.to_json do
   .event-card__special-event
     - if event.special_event
       %span= event.special_event.humanize
