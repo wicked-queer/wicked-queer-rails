@@ -39,7 +39,7 @@
     %script{ src: '//use.fontawesome.com/2062cb2865.js' }
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  %body{ class: yield(:body_class), 'data-event' => @event&.to_json || '{}' }
+  %body{class: yield(:body_class), 'data-page-parameters' => content_for?(:page_parameters) ? yield(:page_parameters) : false}
 
     = render 'layouts/header'
 
@@ -64,7 +64,3 @@
       .footer__copyright
         .footer__copyright__left
           &copy; 2021 Wicked Queer
-
-    :javascript
-      event = JSON.parse(document.body.dataset.event);
-      dataLayer.push({festivalevent: event});
