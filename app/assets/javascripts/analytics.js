@@ -20,7 +20,9 @@ document.addEventListener("turbolinks:load", function() {
   }
 
   const filterForm = document.getElementById('filters');
-  filterForm.addEventListener('submit', submitFilterForm);
+  if (filterForm) {
+    filterForm.addEventListener('submit', submitFilterForm);
+  }
 });
 
 function trackEvent(event) {
