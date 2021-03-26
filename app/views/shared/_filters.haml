@@ -15,3 +15,41 @@
           = option[:label]
 
   %button.button{type: 'submit'} Filter
+
+:javascript
+  form = document.getElementById('filters');
+  filters.addEventListener('submit', submitFilterForm);
+
+  function submitFilterForm(event) {
+    event.preventDefault();
+    selects = this.querySelectorAll('select');
+    checkboxes = [...this.querySelectorAll('input[type="checkbox"]')].filter(checkbox => checkbox.checked);
+
+    filters = {};
+    for(select of selects) {
+      filters[select.name] = select.value;
+    }
+
+    names = [];
+    for(checkbox of checkboxes) {
+      const name = checkbox.name.replace('[]', '');
+      names.push(name);
+      if (filters[name]) {
+        filters[name].push(checkbox.value);
+      } else {
+        filters[name] = [checkbox.value];
+      }
+    }
+
+    names = [...new Set(names)];
+    for (name of names) {
+      filters[name] = filters[name].join();
+    }
+
+    dataLayer.push({
+      event: 'events.filter',
+      filters: filters
+    });
+
+    form.submit();  
+  }
