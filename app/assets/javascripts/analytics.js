@@ -3,7 +3,7 @@ wq = {}
 wq.track = function(eventName, eventParams) {
   dataLayer.push({
     event: eventName,
-    'wq.eventParameters': eventParams
+    'wq.event': eventParams
   });
 }
 
@@ -16,7 +16,7 @@ document.addEventListener("turbolinks:load", function() {
   const pageParameters = document.body.dataset.pageParameters;
   if (pageParameters) {
     parameters = JSON.parse(pageParameters);
-    dataLayer.push({'wq.pageParameters': parameters});
+    dataLayer.push({'wq.page': parameters});
   }
 
   const filterForm = document.getElementById('filters');
