@@ -1,0 +1,29 @@
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScreeningEvent",
+    "name": "<%= event.title %>",
+    "startDate": "<%= event.date %>",
+    "endDate": "<%= event.safe_end_date %>",
+    "eventAttendanceMode": "<%= event.attendance_mode %>",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "<%= event.title %>"
+      },
+    "image": "https:<%= event.static_image %>",
+    "description": "<%= event.full_description %>",
+    "offers": {
+      "@type": "Offer",
+      "url": "<%= event.url %>",
+      "price": "<%= event.cost %>",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "<%= event.date %>"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "Wicked Queer, Boston's LGBTQ+ Film Festival",
+      "url": "https://www.wickedqueer.org"
+    }
+  }
+</script>

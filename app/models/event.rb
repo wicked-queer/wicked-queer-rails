@@ -104,6 +104,11 @@ class Event < ContentfulModel::Base
     end_date || date + 3.hours
   end
 
+  def attendance_mode
+    virtual? ? 'https://schema.org/OnlineEventAttendanceMode' :
+              'https://schema.org/OfflineEventAttendanceMode'
+  end
+
   def to_hash
     {
       additional_films: additional_films&.map(&:to_hash),
@@ -128,5 +133,31 @@ class Event < ContentfulModel::Base
 
   def to_json
     to_hash.to_json
+  end
+
+  def to_schema
+    {
+      '@context' => 'https://schema.org',
+      '@type' => 'ScreeningEvent',
+      'name' => title,
+      'startDate' => date,
+      'endDate' => safe_end_date,
+      'eventAttendanceMode' => attendance_mode,
+      'description' => full_description,
+      'image' => [static_image],
+      'organizer' => {
+        '@type' => 'Organization',
+        'name' => "Wicked Queer, Boston's LGBTQ+ Film Festival",
+        'url' => 'https://www.wickedqueer.org'
+      },
+      'offers': {
+        '@type': 'Offer',
+        'url': url,
+        'price': cost,
+        'priceCurrency': 'USD',
+        'availability': 'https://schema.org/InStock',
+        'validFrom': date
+      }
+    }
   end
 end

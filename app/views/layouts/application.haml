@@ -1,7 +1,7 @@
 !!!
 
 %html
-  %head 
+  %head
     :javascript
       dataLayer = [];
 
@@ -14,11 +14,14 @@
       })(window,document,'script','dataLayer','GTM-KQQ6NLL');
       <!-- End Google Tag Manager -->
 
+    = yield :schema
+
     - image = '/wq_graphic.png'
     - image = "http:#{@homePage.hero_image.file.url}" if @homePage
     - image = "#{image_with_default @event.image_url}" if @event
 
     %title= formatted_title(yield :title)
+    %meta{name: 'description', content: content_for?(:description) ? yield(:description) : default_description}
 
     = csrf_meta_tags
     = csp_meta_tag
@@ -51,8 +54,7 @@
 
       .footer__links
         .footer__links__left
-          = link_to root_path do
-            = image_tag 'logo_pink_and_trans.svg', class: 'logo'
+          = render 'shared/logo_link'
 
         .footer__links__right
           %a.footer__link{href: '/events'} Events

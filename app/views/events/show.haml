@@ -2,6 +2,7 @@
 = content_for :description, @event.full_description
 = content_for :body_class, 'body-event'
 = content_for :page_parameters, {event: @event.to_hash}.to_json
+= content_for :schema, render('event_schema', event: @event)
 
 .pink-shard
 
