@@ -7,7 +7,7 @@ wq.track = function(eventName, eventParams) {
   });
 }
 
-document.addEventListener("turbolinks:load", function() {
+window.addEventListener('load', function() {
   const events = document.querySelectorAll('[data-event]');
   for (e of events) {
     e.addEventListener('click', trackEvent);
