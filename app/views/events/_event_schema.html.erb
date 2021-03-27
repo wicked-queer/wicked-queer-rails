@@ -6,11 +6,12 @@
     "startDate": "<%= event.date %>",
     "endDate": "<%= event.safe_end_date %>",
     "eventAttendanceMode": "<%= event.attendance_mode %>",
+    "eventStatus": "https://schema.org/EventScheduled",
     "location": {
       "@type": "VirtualLocation",
-      "url": "<%= event.title %>"
+      "url": "<%= event.venue.url %>"
       },
-    "image": "https:<%= event.static_image %>",
+    "image": "https:<%= event.image_url %>",
     "description": "<%= event.full_description %>",
     "offers": {
       "@type": "Offer",
