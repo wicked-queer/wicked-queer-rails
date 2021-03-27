@@ -16,7 +16,10 @@ document.addEventListener("turbolinks:load", function() {
   const pageParameters = document.body.dataset.pageParameters;
   if (pageParameters) {
     parameters = JSON.parse(pageParameters);
-    dataLayer.push({'wq.page': parameters});
+    dataLayer.push({
+      event: 'wq.pageView', 
+      'wq.page': parameters
+    });
   }
 
   const filterForm = document.getElementById('filters');
