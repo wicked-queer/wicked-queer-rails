@@ -14,8 +14,8 @@
   text-decoration: none;
   text-transform: uppercase;
 
-  &:hover {
-    background: shade($pink, 5%);
+  &:hover, &:hover {
+    background: $dark-pink;
     box-shadow: 2px 2px 0 rgba(black, .1);
   }
 

@@ -27,7 +27,7 @@ class Event < ContentfulModel::Base
           load
   end
 
-  def self.find_by_series series_name
+  def self.find_by_series_name series_name
     self.all.
           params({
             'fields.series.sys.contentType.sys.id' => 'series',
@@ -37,12 +37,22 @@ class Event < ContentfulModel::Base
           load
   end
 
-  def self.find_by_multiple(series: nil, venue: nil, type: nil, sort: 'default')
+  def self.find_by_series_slug series_slug
+    self.all.
+          params({
+            'fields.series.sys.contentType.sys.id' => 'series',
+            'fields.series.fields.slug[match]' => series_slug
+          }).
+          order('date').
+          load
+  end
+
+  def self.find_by_multiple(series: nil, venue: nil, type: nil, upcoming: false, sort: 'default')
     params = {}
     if series
       params.merge!({
         'fields.series.sys.contentType.sys.id' => 'series',
-        'fields.series.fields.name[match]' => series
+        'fields.series.fields.slug[match]' => series
       })
     end
 
@@ -56,6 +66,12 @@ class Event < ContentfulModel::Base
     if type
       params.merge!({
         'fields.eventType[in]' => type
+      })
+    end
+
+    if upcoming
+      params.merge!({
+        'fields.endDate[gt]' => DateTime.now.to_s
       })
     end
 

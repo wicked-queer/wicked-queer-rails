@@ -19,7 +19,7 @@ class FestivalController < ApplicationController
     check_preview_api
     name = "Festival #{year}"
     @series = Series.find_by(name: name).first()
-    @all_events = Event.find_by_series name
+    @all_events = Event.find_by_series_name name
     @events = filter_events(@all_events)
     @events = sort_events(@events)
 

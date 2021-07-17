@@ -1,5 +1,5 @@
 .series-shard-1 {
-  background: linear-gradient(135deg, shade($pink, 8%), shade($pink, 3%));
+  background: $pink;
   position: absolute;
     top: 0;
     right: 0;
@@ -10,7 +10,7 @@
 }
 
 .series-shard-2 {
-  background: linear-gradient(135deg, shade($pink, 5%), shade($pink, 10%));
+  background: $dark-pink;
   position: absolute;
     top: 0;
     right: 0;

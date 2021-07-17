@@ -56,7 +56,7 @@
 }
 
 .hero__pink-shard {
-  background: linear-gradient(135deg, shade($pink, 15%), $pink);
+  background: linear-gradient(135deg, $dark-pink, $pink);
   position: absolute;
     top: 0;
     right: 60%;
