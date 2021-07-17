@@ -12,8 +12,9 @@
 
 %section.home__events
   .wrapper.wrapper--filters
-    .filters
-      = render 'shared/filters'
+    - if @all_events.length > 3
+      .filters
+        = render 'shared/filters'
 
     .wrapper--events
       - @events.each do |event|
